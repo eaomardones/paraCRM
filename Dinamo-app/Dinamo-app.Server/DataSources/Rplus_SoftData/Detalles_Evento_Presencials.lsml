@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Detalles_Evento_Presencial">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_evento"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="direccion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="piso"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="cap_max"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="cap_min"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_inicio"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_fin"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="duracion_dias"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="jornada_horas"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sesiones"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="asistencias"
+        Association="FK_asistencia_evento1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="asistencia" />
+      <NavigationProperty
+        Name="ciudad"
+        Association="FK_evento_ciudad1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="ciudad" />
+      <NavigationProperty
+        Name="pai"
+        Association="FK_evento_pais1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="pais" />
+      <NavigationProperty
+        Name="rubro"
+        Association="FK_evento_rubro1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="rubro" />
+      <NavigationProperty
+        Name="Evento_Presencial_Sesiones"
+        Association="FK_evento_sesiones_evento1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="Evento_Presencial_Sesiones" />
+      <NavigationProperty
+        Name="tipo_evento"
+        Association="FK_evento_tipo_evento1"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="tipo_evento" />
+      <NavigationProperty
+        Name="actividad"
+        Association="FK_Detalles_Evento_Presencial_actividad"
+        FromEnd="Detalles_Evento_Presencial"
+        ToEnd="actividad" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_asistencia_evento1">
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      EntityType="Detalles_Evento_Presencial">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="asistencia"
+      Multiplicity="Many"
+      EntityType="asistencia" />
+  </Association>
+  <Association
+    Name="FK_evento_sesiones_evento1">
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      Multiplicity="One"
+      EntityType="Detalles_Evento_Presencial">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Evento_Presencial_Sesiones"
+      Multiplicity="Many"
+      EntityType="Evento_Presencial_Sesione" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Detalles_Evento_Presencials"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Detalles_Evento_Presencial" />
+    <AssociationSet
+      Name="FK_asistencia_evento1"
+      Association="FK_asistencia_evento1">
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+      <AssociationSetEnd
+        Name="asistencia"
+        EntitySet="asistencias" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_evento_sesiones_evento1"
+      Association="FK_evento_sesiones_evento1">
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+      <AssociationSetEnd
+        Name="Evento_Presencial_Sesiones"
+        EntitySet="Evento_Presencial_Sesiones" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Detalles_Evento_Presencials_Single"
+      ReturnType="Detalles_Evento_Presencial">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_evento" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_evento" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Detalles_Evento_Presencials" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_evento"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_evento' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Detalles_Evento_Presencials_SingleOrDefault"
+      ReturnType="Detalles_Evento_Presencial">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_evento" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_evento" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Detalles_Evento_Presencials" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_evento"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_evento' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Detalles_Evento_Presencials">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Detalles_Evento_Presencial" />
+        <SsdlProperty
+          Name="id_evento"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[id_evento]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="nombre"
+          Nullable="True"
+          Type="varchar"
+          Property="Detalles_Evento_Presencial/Properties[nombre]" />
+        <SsdlProperty
+          Name="direccion"
+          Nullable="True"
+          Type="text"
+          Property="Detalles_Evento_Presencial/Properties[direccion]" />
+        <SsdlProperty
+          Name="piso"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[piso]" />
+        <SsdlProperty
+          Name="cap_max"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[cap_max]" />
+        <SsdlProperty
+          Name="cap_min"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[cap_min]" />
+        <SsdlProperty
+          Name="fecha_inicio"
+          Nullable="True"
+          Type="datetime"
+          Property="Detalles_Evento_Presencial/Properties[fecha_inicio]" />
+        <SsdlProperty
+          Name="fecha_fin"
+          Nullable="True"
+          Type="datetime"
+          Property="Detalles_Evento_Presencial/Properties[fecha_fin]" />
+        <SsdlProperty
+          Name="duracion_dias"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[duracion_dias]" />
+        <SsdlProperty
+          Name="jornada_horas"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[jornada_horas]" />
+        <SsdlProperty
+          Name="sesiones"
+          Nullable="True"
+          Type="int"
+          Property="Detalles_Evento_Presencial/Properties[sesiones]" />
+        <SsdlForeignKeyProperty
+          Name="id_actividad"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_actividad" />
+        <SsdlForeignKeyProperty
+          Name="id_ciudad"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_ciudad" />
+        <SsdlForeignKeyProperty
+          Name="id_pais"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_pais" />
+        <SsdlForeignKeyProperty
+          Name="id_rubro_orientado"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_rubro_orientado" />
+        <SsdlForeignKeyProperty
+          Name="id_tipo_evento"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_tipo_evento" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_asistencia_evento1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_asistencia_evento" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_asistencia_evento1]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_evento" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_asistencia_evento1]/Members[asistencia]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_evento" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_evento_sesiones_evento1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_evento_sesiones_evento" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_sesiones_evento1]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_evento" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_sesiones_evento1]/Members[Evento_Presencial_Sesiones]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_evento" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

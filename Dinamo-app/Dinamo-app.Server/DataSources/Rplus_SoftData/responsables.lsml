@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="responsable">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_responsable"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="apellido"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="email"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="telefono"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="20" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ResponsableEmpresas"
+        Association="FK_ResponsableEmpresa_responsable"
+        FromEnd="responsable"
+        ToEnd="ResponsableEmpresa" />
+      <NavigationProperty
+        Name="ResponsablePersonas"
+        Association="FK_ResponsablePersona_responsable"
+        FromEnd="responsable"
+        ToEnd="ResponsablePersona" />
+      <NavigationProperty
+        Name="Clientes"
+        Association="FK_Clientes_responsable"
+        FromEnd="responsable"
+        ToEnd="Clientes" />
+      <NavigationProperty
+        Name="ResponsableClientes"
+        Association="FK_ResponsableCliente_responsable"
+        FromEnd="responsable"
+        ToEnd="ResponsableCliente" />
+      <NavigationProperty
+        Name="seguimientoes"
+        Association="FK_seguimiento_responsable"
+        FromEnd="responsable"
+        ToEnd="seguimiento" />
+      <NavigationProperty
+        Name="Campanhas"
+        Association="FK_Campaña_responsable"
+        FromEnd="responsable"
+        ToEnd="Campanha" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="responsables"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="responsable" />
+    <QueryOperation
+      Name="responsables_Single"
+      ReturnType="responsable">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_responsable" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_responsable" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="responsables" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_responsable"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_responsable' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="responsables_SingleOrDefault"
+      ReturnType="responsable">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_responsable" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_responsable" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="responsables" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_responsable"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_responsable' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_ResponsableEmpresa_responsable"
+      Association="FK_ResponsableEmpresa_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="ResponsableEmpresa"
+        EntitySet="ResponsableEmpresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ResponsablePersona_responsable"
+      Association="FK_ResponsablePersona_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="ResponsablePersona"
+        EntitySet="ResponsablePersonas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_Clientes_responsable"
+      Association="FK_Clientes_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ResponsableCliente_responsable"
+      Association="FK_ResponsableCliente_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="ResponsableCliente"
+        EntitySet="ResponsableClientes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_seguimiento_responsable"
+      Association="FK_seguimiento_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="seguimiento"
+        EntitySet="seguimientoes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_Campaña_responsable"
+      Association="FK_Campaña_responsable">
+      <AssociationSetEnd
+        Name="responsable"
+        EntitySet="responsables" />
+      <AssociationSetEnd
+        Name="Campanha"
+        EntitySet="Campanhas" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_ResponsableEmpresa_responsable">
+    <AssociationEnd
+      Name="responsable"
+      Multiplicity="One"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsableEmpresa"
+      Multiplicity="Many"
+      EntityType="ResponsableEmpresa" />
+  </Association>
+  <Association
+    Name="FK_ResponsablePersona_responsable">
+    <AssociationEnd
+      Name="responsable"
+      Multiplicity="One"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsablePersona"
+      Multiplicity="Many"
+      EntityType="ResponsablePersona" />
+  </Association>
+  <Association
+    Name="FK_Clientes_responsable">
+    <AssociationEnd
+      Name="responsable"
+      Multiplicity="One"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="Many"
+      EntityType="Cliente" />
+  </Association>
+  <Association
+    Name="FK_ResponsableCliente_responsable">
+    <AssociationEnd
+      Name="responsable"
+      Multiplicity="One"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsableCliente"
+      Multiplicity="Many"
+      EntityType="ResponsableCliente" />
+  </Association>
+  <Association
+    Name="FK_seguimiento_responsable">
+    <AssociationEnd
+      Name="responsable"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="seguimiento"
+      Multiplicity="Many"
+      EntityType="seguimiento" />
+  </Association>
+  <Association
+    Name="FK_Campaña_responsable">
+    <AssociationEnd
+      Name="responsable"
+      EntityType="responsable">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Campanha"
+      Multiplicity="Many"
+      EntityType="Campanha" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="responsables">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="responsable" />
+        <SsdlProperty
+          Name="id_responsable"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="responsable/Properties[id_responsable]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="nombre"
+          Nullable="True"
+          Type="varchar"
+          Property="responsable/Properties[nombre]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="apellido"
+          Nullable="True"
+          Type="varchar"
+          Property="responsable/Properties[apellido]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="email"
+          Nullable="True"
+          Type="varchar"
+          Property="responsable/Properties[email]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="telefono"
+          Nullable="True"
+          Type="nchar"
+          Property="responsable/Properties[telefono]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Campaña_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Campaña_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Campaña_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Campaña_responsable]/Members[Campanha]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Clientes_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Clientes_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_responsable]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="responsable_prin" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsableCliente_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsableCliente_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableCliente_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableCliente_responsable]/Members[ResponsableCliente]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsableEmpresa_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsableEmpresa_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableEmpresa_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableEmpresa_responsable]/Members[ResponsableEmpresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsablePersona_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsablePersona_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsablePersona_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsablePersona_responsable]/Members[ResponsablePersona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_seguimiento_responsable">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_seguimiento_responsable" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_responsable]/Members[responsable]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_responsable]/Members[seguimiento]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Responsable" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

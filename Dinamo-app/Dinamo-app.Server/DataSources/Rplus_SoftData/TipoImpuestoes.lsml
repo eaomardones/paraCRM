@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="TipoImpuesto">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_tipo_impuesto"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Tipo"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Descripcion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Clientes"
+        Association="FK_Clientes_TipoImpuesto"
+        FromEnd="TipoImpuesto"
+        ToEnd="Clientes" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Clientes_TipoImpuesto">
+    <AssociationEnd
+      Name="TipoImpuesto"
+      Multiplicity="One"
+      EntityType="TipoImpuesto">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="Many"
+      EntityType="Cliente" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="TipoImpuestoes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="TipoImpuesto" />
+    <AssociationSet
+      Name="FK_Clientes_TipoImpuesto"
+      Association="FK_Clientes_TipoImpuesto">
+      <AssociationSetEnd
+        Name="TipoImpuesto"
+        EntitySet="TipoImpuestoes" />
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+    </AssociationSet>
+    <QueryOperation
+      Name="TipoImpuestoes_Single"
+      ReturnType="TipoImpuesto">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_tipo_impuesto" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_tipo_impuesto" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="TipoImpuestoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_tipo_impuesto"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_tipo_impuesto' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="TipoImpuestoes_SingleOrDefault"
+      ReturnType="TipoImpuesto">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_tipo_impuesto" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_tipo_impuesto" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="TipoImpuestoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_tipo_impuesto"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_tipo_impuesto' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="TipoImpuestoes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="TipoImpuesto" />
+        <SsdlProperty
+          Name="id_tipo_impuesto"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="TipoImpuesto/Properties[id_tipo_impuesto]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="Tipo"
+          Nullable="True"
+          Type="varchar"
+          Property="TipoImpuesto/Properties[Tipo]" />
+        <SsdlProperty
+          Name="Descripcion"
+          Nullable="True"
+          Type="text"
+          Property="TipoImpuesto/Properties[Descripcion]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Clientes_TipoImpuesto">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Clientes_TipoImpuesto" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_TipoImpuesto]/Members[TipoImpuesto]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_tipo_impuesto" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_TipoImpuesto]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="tipo_imp" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

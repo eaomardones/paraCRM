@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.Dinamo_app.HTMLClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:persona" />
+      <DefaultScreen
+        Value="Viewpersona">
+        <DefaultScreen.Attributes>
+          <ScreenParameterMapping
+            ScreenParameter="Viewpersona/Properties[persona]" />
+        </DefaultScreen.Attributes>
+      </DefaultScreen>
+      <SummaryProperty
+        Property="persona/Properties[nombre]" />
+      <DisplayName
+        Value="Persona" />
+    </EntityType.Attributes>
+  </EntityType>
+</Application>

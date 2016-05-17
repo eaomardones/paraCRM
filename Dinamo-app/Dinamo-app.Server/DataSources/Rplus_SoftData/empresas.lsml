@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="empresa">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_empresa"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Nombre_Fantasia"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Nombre_Legal"
+        PropertyType=":Person">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RUC"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="10" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Correo"
+        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="es_cliente"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Adjuntoempresas"
+        Association="FK_Adjuntoempresa_empresa"
+        FromEnd="empresa"
+        ToEnd="Adjuntoempresa" />
+      <NavigationProperty
+        Name="direccion_empresas"
+        Association="FK_direccion_empresa_empresa"
+        FromEnd="empresa"
+        ToEnd="direccion_empresa" />
+      <NavigationProperty
+        Name="rubro"
+        Association="FK_empresa_rubro"
+        FromEnd="empresa"
+        ToEnd="rubro" />
+      <NavigationProperty
+        Name="personas"
+        Association="FK_persona_empresa"
+        FromEnd="empresa"
+        ToEnd="persona" />
+      <NavigationProperty
+        Name="ResponsableEmpresas"
+        Association="FK_ResponsableEmpresa_empresa"
+        FromEnd="empresa"
+        ToEnd="ResponsableEmpresa" />
+      <NavigationProperty
+        Name="Clientes"
+        Association="FK_Clientes_empresa"
+        FromEnd="empresa"
+        ToEnd="Clientes" />
+      <EntityProperty
+        Name="Telefono"
+        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+          <Attribute
+            Class="Microsoft.LightSwitch.Extensions:@PhoneNumberValidation">
+            <Property
+              Name="Formats"
+              Value="C (AAA) NNN-NNNN;C (AAA) NNNNNNN;CAAANNNNNNN;(AAA) NNN-NNNN;(AAA) NNNNNNN;AAANNNNNNN;NNN-NNNN;NNNNNNN;CCC (AA) NNN-NNN;CCC (AA) NNN-NNNN" />
+          </Attribute>
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Direccion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Web"
+        PropertyType="Microsoft.LightSwitch.Extensions:WebAddress?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="logotipo"
+        PropertyType=":Binary?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength
+            IsFixedLength="True"
+            Value="50" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Adjuntoempresa_empresa">
+    <AssociationEnd
+      Name="empresa"
+      EntityType="empresa">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Adjuntoempresa"
+      Multiplicity="Many"
+      EntityType="Adjuntoempresa" />
+  </Association>
+  <Association
+    Name="FK_direccion_empresa_empresa">
+    <AssociationEnd
+      Name="empresa"
+      EntityType="empresa">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_empresa"
+      Multiplicity="Many"
+      EntityType="direccion_empresa" />
+  </Association>
+  <Association
+    Name="FK_persona_empresa">
+    <AssociationEnd
+      Name="empresa"
+      EntityType="empresa">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="persona"
+      Multiplicity="Many"
+      EntityType="persona" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="empresas"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="empresa" />
+    <AssociationSet
+      Name="FK_Adjuntoempresa_empresa"
+      Association="FK_Adjuntoempresa_empresa">
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+      <AssociationSetEnd
+        Name="Adjuntoempresa"
+        EntitySet="Adjuntoempresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_direccion_empresa_empresa"
+      Association="FK_direccion_empresa_empresa">
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+      <AssociationSetEnd
+        Name="direccion_empresa"
+        EntitySet="direccion_empresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_persona_empresa"
+      Association="FK_persona_empresa">
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+    </AssociationSet>
+    <QueryOperation
+      Name="empresas_Single"
+      ReturnType="empresa">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_empresa" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_empresa" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="empresas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_empresa"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_empresa' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="empresas_SingleOrDefault"
+      ReturnType="empresa">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_empresa" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_empresa" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="empresas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_empresa"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_empresa' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_ResponsableEmpresa_empresa"
+      Association="FK_ResponsableEmpresa_empresa">
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+      <AssociationSetEnd
+        Name="ResponsableEmpresa"
+        EntitySet="ResponsableEmpresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_Clientes_empresa"
+      Association="FK_Clientes_empresa">
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_ResponsableEmpresa_empresa">
+    <AssociationEnd
+      Name="empresa"
+      Multiplicity="One"
+      EntityType="empresa">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsableEmpresa"
+      Multiplicity="Many"
+      EntityType="ResponsableEmpresa" />
+  </Association>
+  <Association
+    Name="FK_Clientes_empresa">
+    <AssociationEnd
+      Name="empresa"
+      Multiplicity="One"
+      EntityType="empresa">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="Many"
+      EntityType="Cliente" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="empresas">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="empresa" />
+        <SsdlProperty
+          Name="id_empresa"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="empresa/Properties[id_empresa]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="Nombre_Fantasia"
+          Nullable="True"
+          Type="varchar"
+          Property="empresa/Properties[Nombre_Fantasia]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="Nombre_Legal"
+          Nullable="False"
+          Type="varchar"
+          Property="empresa/Properties[Nombre_Legal]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="RUC"
+          Nullable="True"
+          Type="nchar"
+          Property="empresa/Properties[RUC]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="Correo"
+          Nullable="False"
+          Type="varchar"
+          Property="empresa/Properties[Correo]" />
+        <SsdlProperty
+          Name="es_cliente"
+          Nullable="True"
+          Type="bit"
+          Property="empresa/Properties[es_cliente]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="Telefono"
+          Nullable="True"
+          Type="varchar"
+          Property="empresa/Properties[Telefono]" />
+        <SsdlProperty
+          Name="Direccion"
+          Nullable="True"
+          Type="text"
+          Property="empresa/Properties[Direccion]" />
+        <SsdlProperty
+          Name="Web"
+          Nullable="True"
+          Type="text"
+          Property="empresa/Properties[Web]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="logotipo"
+          Nullable="True"
+          Type="binary"
+          Property="empresa/Properties[logotipo]" />
+        <SsdlForeignKeyProperty
+          Name="id_rubro"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_rubro" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Adjuntoempresa_empresa">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Adjuntoempresa_empresa" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Adjuntoempresa_empresa]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Adjuntoempresa_empresa]/Members[Adjuntoempresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="empresa_id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Clientes_empresa">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Clientes_empresa" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_empresa]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_empresa]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_empresa_empresa">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_empresa_empresa" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_empresa_empresa]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_empresa_empresa]/Members[direccion_empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_persona_empresa">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_persona_empresa" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_persona_empresa]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_persona_empresa]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsableEmpresa_empresa">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsableEmpresa_empresa" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableEmpresa_empresa]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableEmpresa_empresa]/Members[ResponsableEmpresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_empresa" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

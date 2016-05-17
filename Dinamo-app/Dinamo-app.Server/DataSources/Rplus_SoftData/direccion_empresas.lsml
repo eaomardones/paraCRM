@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="direccion_empresa">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_direccion"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="calle1"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="calle2"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="numero"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="10" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="piso"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="observacion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ciudad"
+        Association="FK_direccion_ciudad"
+        FromEnd="direccion_empresa"
+        ToEnd="ciudad" />
+      <NavigationProperty
+        Name="empresa"
+        Association="FK_direccion_empresa_empresa"
+        FromEnd="direccion_empresa"
+        ToEnd="empresa" />
+      <NavigationProperty
+        Name="pai"
+        Association="FK_direccion_pais"
+        FromEnd="direccion_empresa"
+        ToEnd="pais" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="direccion_empresas"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="direccion_empresa" />
+    <QueryOperation
+      Name="direccion_empresas_Single"
+      ReturnType="direccion_empresa">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_direccion" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_direccion" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="direccion_empresas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_direccion"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_direccion' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="direccion_empresas_SingleOrDefault"
+      ReturnType="direccion_empresa">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_direccion" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_direccion" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="direccion_empresas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_direccion"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_direccion' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="direccion_empresas">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="direccion_empresa" />
+        <SsdlProperty
+          Name="id_direccion"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="direccion_empresa/Properties[id_direccion]" />
+        <SsdlProperty
+          Name="calle1"
+          Nullable="True"
+          Type="text"
+          Property="direccion_empresa/Properties[calle1]" />
+        <SsdlProperty
+          Name="calle2"
+          Nullable="True"
+          Type="text"
+          Property="direccion_empresa/Properties[calle2]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="numero"
+          Nullable="True"
+          Type="nchar"
+          Property="direccion_empresa/Properties[numero]" />
+        <SsdlProperty
+          Name="piso"
+          Nullable="True"
+          Type="int"
+          Property="direccion_empresa/Properties[piso]" />
+        <SsdlProperty
+          Name="observacion"
+          Nullable="True"
+          Type="text"
+          Property="direccion_empresa/Properties[observacion]" />
+        <SsdlForeignKeyProperty
+          Name="id_ciudad"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_ciudad" />
+        <SsdlForeignKeyProperty
+          Name="id_empresa"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_empresa" />
+        <SsdlForeignKeyProperty
+          Name="id_pais"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_pais" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+</ServiceApplication>

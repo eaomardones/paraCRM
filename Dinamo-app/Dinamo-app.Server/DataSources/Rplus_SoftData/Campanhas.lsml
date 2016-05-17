@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Campanha">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_campanha"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Nombre"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="150" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Fecha_Alta"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Fecha_Cierre"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Descripcion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Observaciones"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="actividads"
+        Association="FK_actividad_Campaña"
+        FromEnd="Campanha"
+        ToEnd="actividad" />
+      <NavigationProperty
+        Name="responsable"
+        Association="FK_Campaña_responsable"
+        FromEnd="Campanha"
+        ToEnd="responsable" />
+      <NavigationProperty
+        Name="rubro"
+        Association="FK_Campaña_rubro"
+        FromEnd="Campanha"
+        ToEnd="rubro" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_actividad_Campaña">
+    <AssociationEnd
+      Name="Campanha"
+      Multiplicity="One"
+      EntityType="Campanha">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="actividad"
+      Multiplicity="Many"
+      EntityType="actividad" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Campanhas"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Campanha" />
+    <AssociationSet
+      Name="FK_actividad_Campaña"
+      Association="FK_actividad_Campaña">
+      <AssociationSetEnd
+        Name="Campanha"
+        EntitySet="Campanhas" />
+      <AssociationSetEnd
+        Name="actividad"
+        EntitySet="actividads" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Campanhas_Single"
+      ReturnType="Campanha">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_campanha" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_campanha" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Campanhas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_campanha"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_campanha' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Campanhas_SingleOrDefault"
+      ReturnType="Campanha">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_campanha" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_campanha" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Campanhas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_campanha"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_campanha' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Campanhas">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Campanha" />
+        <SsdlProperty
+          Name="id_campanha"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="Campanha/Properties[id_campanha]" />
+        <SsdlProperty
+          MaxLength="150"
+          Name="Nombre"
+          Nullable="True"
+          Type="varchar"
+          Property="Campanha/Properties[Nombre]" />
+        <SsdlProperty
+          Name="Fecha_Alta"
+          Nullable="True"
+          Type="date"
+          Property="Campanha/Properties[Fecha_Alta]" />
+        <SsdlProperty
+          Name="Fecha_Cierre"
+          Nullable="True"
+          Type="date"
+          Property="Campanha/Properties[Fecha_Cierre]" />
+        <SsdlProperty
+          Name="Descripcion"
+          Nullable="True"
+          Type="text"
+          Property="Campanha/Properties[Descripcion]" />
+        <SsdlProperty
+          Name="Observaciones"
+          Nullable="True"
+          Type="text"
+          Property="Campanha/Properties[Observaciones]" />
+        <SsdlForeignKeyProperty
+          Name="id_responsable"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_responsable" />
+        <SsdlForeignKeyProperty
+          Name="Rubros"
+          Nullable="True"
+          Type="int"
+          PropertyName="Rubros" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_actividad_Campaña">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_actividad_Campaña" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_actividad_Campaña]/Members[Campanha]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_campanha" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_actividad_Campaña]/Members[actividad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_campaña" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

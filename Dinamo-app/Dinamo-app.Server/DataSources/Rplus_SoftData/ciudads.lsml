@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="ciudad">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_ciudad"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Nombre_pais"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="pai"
+        Association="FK_ciudad_pais"
+        FromEnd="ciudad"
+        ToEnd="pais" />
+      <NavigationProperty
+        Name="direccion_empresas"
+        Association="FK_direccion_ciudad"
+        FromEnd="ciudad"
+        ToEnd="direccion_empresa" />
+      <NavigationProperty
+        Name="direccion_personas"
+        Association="FK_direccion_persona_ciudad"
+        FromEnd="ciudad"
+        ToEnd="direccion_persona" />
+      <NavigationProperty
+        Name="Detalles_Evento_Presencials"
+        Association="FK_evento_ciudad1"
+        FromEnd="ciudad"
+        ToEnd="Detalles_Evento_Presencial" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_direccion_ciudad">
+    <AssociationEnd
+      Name="ciudad"
+      EntityType="ciudad">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_empresa"
+      Multiplicity="Many"
+      EntityType="direccion_empresa" />
+  </Association>
+  <Association
+    Name="FK_direccion_persona_ciudad">
+    <AssociationEnd
+      Name="ciudad"
+      EntityType="ciudad">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_persona"
+      Multiplicity="Many"
+      EntityType="direccion_persona" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="ciudads"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="ciudad" />
+    <AssociationSet
+      Name="FK_direccion_ciudad"
+      Association="FK_direccion_ciudad">
+      <AssociationSetEnd
+        Name="ciudad"
+        EntitySet="ciudads" />
+      <AssociationSetEnd
+        Name="direccion_empresa"
+        EntitySet="direccion_empresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_direccion_persona_ciudad"
+      Association="FK_direccion_persona_ciudad">
+      <AssociationSetEnd
+        Name="ciudad"
+        EntitySet="ciudads" />
+      <AssociationSetEnd
+        Name="direccion_persona"
+        EntitySet="direccion_personas" />
+    </AssociationSet>
+    <QueryOperation
+      Name="ciudads_Single"
+      ReturnType="ciudad">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_ciudad" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_ciudad" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ciudads" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_ciudad"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_ciudad' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="ciudads_SingleOrDefault"
+      ReturnType="ciudad">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_ciudad" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_ciudad" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ciudads" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_ciudad"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_ciudad' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_evento_ciudad1"
+      Association="FK_evento_ciudad1">
+      <AssociationSetEnd
+        Name="ciudad"
+        EntitySet="ciudads" />
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_evento_ciudad1">
+    <AssociationEnd
+      Name="ciudad"
+      EntityType="ciudad">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      Multiplicity="Many"
+      EntityType="Detalles_Evento_Presencial" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="ciudads">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="ciudad" />
+        <SsdlProperty
+          Name="id_ciudad"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="ciudad/Properties[id_ciudad]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="Nombre_pais"
+          Nullable="True"
+          Type="varchar"
+          Property="ciudad/Properties[Nombre_pais]" />
+        <SsdlForeignKeyProperty
+          Name="id_pais"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_pais" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_ciudad">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_ciudad" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_ciudad]/Members[ciudad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_ciudad]/Members[direccion_empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_persona_ciudad">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_persona_ciudad" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_ciudad]/Members[ciudad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_ciudad]/Members[direccion_persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_evento_ciudad1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_evento_ciudad" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_ciudad1]/Members[ciudad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_ciudad1]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_ciudad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

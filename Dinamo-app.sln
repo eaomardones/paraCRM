@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{581633EB-B896-402F-8E60-36F3DA191C85}") = "Dinamo-app", "Dinamo-app\Dinamo-app.lsxtproj", "{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Dinamo-app.Server", "Dinamo-app\Dinamo-app.Server\Dinamo-app.Server.vbproj", "{14ABE696-479D-43D9-89CE-D8578AB4C6BA}"
+EndProject
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Dinamo-app.cliente", "Dinamo-app\Dinamo-app.HTMLClient\Dinamo-app.cliente.jsproj", "{AE22564D-6437-4EAC-B533-9564557636DD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Dinamo-app.adminsitracion", "Dinamo-app\Dinamo-app.adminsitracion\Dinamo-app.adminsitracion.vbproj", "{0D4A8E4B-47D2-47E2-B2A5-3AC6AF8DE921}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50C6EF4-1FCA-4100-A0CA-32F32FF63477}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{14ABE696-479D-43D9-89CE-D8578AB4C6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14ABE696-479D-43D9-89CE-D8578AB4C6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14ABE696-479D-43D9-89CE-D8578AB4C6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14ABE696-479D-43D9-89CE-D8578AB4C6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE22564D-6437-4EAC-B533-9564557636DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE22564D-6437-4EAC-B533-9564557636DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE22564D-6437-4EAC-B533-9564557636DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE22564D-6437-4EAC-B533-9564557636DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4A8E4B-47D2-47E2-B2A5-3AC6AF8DE921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4A8E4B-47D2-47E2-B2A5-3AC6AF8DE921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4A8E4B-47D2-47E2-B2A5-3AC6AF8DE921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4A8E4B-47D2-47E2-B2A5-3AC6AF8DE921}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

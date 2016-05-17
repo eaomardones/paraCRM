@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="repositorio">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <EntityProperty
+        Name="empresa"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="razon_social"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ruc"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="apellido"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ci"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="cargo"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="profecion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="telefono1"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="telefono2"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="celular"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="direccion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ciudad"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="barrrio"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="email"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Rubro"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="id_repo"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="repositorios"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="repositorio" />
+    <QueryOperation
+      Name="repositorios_Single"
+      ReturnType="repositorio">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_repo" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_repo" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="repositorios" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_repo"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_repo' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="repositorios_SingleOrDefault"
+      ReturnType="repositorio">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_repo" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_repo" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="repositorios" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_repo"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_repo' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="repositorios">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="repositorio" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="empresa"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[empresa]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="razon social"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[razon_social]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="ruc"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[ruc]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="nombre"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[nombre]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="apellido"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[apellido]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="ci"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[ci]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="cargo"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[cargo]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="profecion"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[profecion]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="telefono1"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[telefono1]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="telefono2"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[telefono2]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="celular"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[celular]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="direccion"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[direccion]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="ciudad"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[ciudad]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="barrrio"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[barrrio]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="email"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[email]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Rubro"
+          Nullable="True"
+          Type="nvarchar"
+          Property="repositorio/Properties[Rubro]" />
+        <SsdlProperty
+          Name="id_repo"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="repositorio/Properties[id_repo]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+</ServiceApplication>

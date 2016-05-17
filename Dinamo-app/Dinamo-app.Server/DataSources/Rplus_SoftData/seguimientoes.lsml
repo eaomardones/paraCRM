@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="seguimiento">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_registro"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="fecha_contacto"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_prox_con"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="observaciones"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <Required />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Estado"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_registro"
+        IsReadOnly="True"
+        PropertyType=":RowVersion?">
+        <EntityProperty.Attributes>
+          <Hidden />
+          <UseForConcurrency />
+          <MaxLength
+            IsFixedLength="True"
+            Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="persona"
+        Association="FK_seguimiento_persona"
+        FromEnd="seguimiento"
+        ToEnd="persona" />
+      <NavigationProperty
+        Name="responsable1"
+        Association="FK_seguimiento_responsable"
+        FromEnd="seguimiento"
+        ToEnd="responsable" />
+      <NavigationProperty
+        Name="actividad"
+        Association="FK_seguimiento_actividad"
+        FromEnd="seguimiento"
+        ToEnd="actividad" />
+      <NavigationProperty
+        Name="tipo_gestion"
+        Association="FK_seguimiento_tipo_gestion"
+        FromEnd="seguimiento"
+        ToEnd="tipo_gestion" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="seguimientoes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="seguimiento" />
+    <QueryOperation
+      Name="seguimientoes_Single"
+      ReturnType="seguimiento">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_registro" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_registro" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="seguimientoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_registro"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_registro' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="seguimientoes_SingleOrDefault"
+      ReturnType="seguimiento">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_registro" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_registro" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="seguimientoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_registro"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_registro' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="seguimientoes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="seguimiento" />
+        <SsdlProperty
+          Name="id_registro"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="seguimiento/Properties[id_registro]" />
+        <SsdlProperty
+          Name="fecha_registro"
+          Nullable="True"
+          StoreGeneratedPattern="Computed"
+          Type="timestamp"
+          Property="seguimiento/Properties[fecha_registro]" />
+        <SsdlProperty
+          Name="fecha_contacto"
+          Nullable="False"
+          Type="datetime"
+          Property="seguimiento/Properties[fecha_contacto]" />
+        <SsdlProperty
+          Name="fecha_prox_con"
+          Nullable="True"
+          Type="datetime"
+          Property="seguimiento/Properties[fecha_prox_con]" />
+        <SsdlProperty
+          Name="observaciones"
+          Nullable="False"
+          Type="text"
+          Property="seguimiento/Properties[observaciones]" />
+        <SsdlProperty
+          Name="Estado"
+          Nullable="True"
+          Type="bit"
+          Property="seguimiento/Properties[Estado]" />
+        <SsdlForeignKeyProperty
+          Name="id_actividad"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_actividad" />
+        <SsdlForeignKeyProperty
+          Name="id_persona"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_persona" />
+        <SsdlForeignKeyProperty
+          Name="Responsable"
+          Nullable="True"
+          Type="int"
+          PropertyName="Responsable" />
+        <SsdlForeignKeyProperty
+          Name="id_gestion"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_gestion" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+</ServiceApplication>

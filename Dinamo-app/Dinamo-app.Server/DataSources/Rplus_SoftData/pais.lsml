@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="pai">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_pais"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre_pais"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ciudads"
+        Association="FK_ciudad_pais"
+        FromEnd="pais"
+        ToEnd="ciudad" />
+      <NavigationProperty
+        Name="direccion_empresas"
+        Association="FK_direccion_pais"
+        FromEnd="pais"
+        ToEnd="direccion_empresa" />
+      <NavigationProperty
+        Name="direccion_personas"
+        Association="FK_direccion_persona_pais"
+        FromEnd="pais"
+        ToEnd="direccion_persona" />
+      <NavigationProperty
+        Name="Detalles_Evento_Presencials"
+        Association="FK_evento_pais1"
+        FromEnd="pais"
+        ToEnd="Detalles_Evento_Presencial" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_ciudad_pais">
+    <AssociationEnd
+      Name="pais"
+      Multiplicity="One"
+      EntityType="pai">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ciudad"
+      Multiplicity="Many"
+      EntityType="ciudad" />
+  </Association>
+  <Association
+    Name="FK_direccion_pais">
+    <AssociationEnd
+      Name="pais"
+      EntityType="pai">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_empresa"
+      Multiplicity="Many"
+      EntityType="direccion_empresa" />
+  </Association>
+  <Association
+    Name="FK_direccion_persona_pais">
+    <AssociationEnd
+      Name="pais"
+      EntityType="pai">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_persona"
+      Multiplicity="Many"
+      EntityType="direccion_persona" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="pais"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="pai" />
+    <AssociationSet
+      Name="FK_ciudad_pais"
+      Association="FK_ciudad_pais">
+      <AssociationSetEnd
+        Name="pais"
+        EntitySet="pais" />
+      <AssociationSetEnd
+        Name="ciudad"
+        EntitySet="ciudads" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_direccion_pais"
+      Association="FK_direccion_pais">
+      <AssociationSetEnd
+        Name="pais"
+        EntitySet="pais" />
+      <AssociationSetEnd
+        Name="direccion_empresa"
+        EntitySet="direccion_empresas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_direccion_persona_pais"
+      Association="FK_direccion_persona_pais">
+      <AssociationSetEnd
+        Name="pais"
+        EntitySet="pais" />
+      <AssociationSetEnd
+        Name="direccion_persona"
+        EntitySet="direccion_personas" />
+    </AssociationSet>
+    <QueryOperation
+      Name="pais_Single"
+      ReturnType="pai">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_pais" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_pais" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="pais" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_pais"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_pais' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="pais_SingleOrDefault"
+      ReturnType="pai">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_pais" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_pais" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="pais" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_pais"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_pais' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_evento_pais1"
+      Association="FK_evento_pais1">
+      <AssociationSetEnd
+        Name="pais"
+        EntitySet="pais" />
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_evento_pais1">
+    <AssociationEnd
+      Name="pais"
+      EntityType="pai">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      Multiplicity="Many"
+      EntityType="Detalles_Evento_Presencial" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="pais">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="pais" />
+        <SsdlProperty
+          Name="id_pais"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="pai/Properties[id_pais]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="nombre_pais"
+          Nullable="True"
+          Type="varchar"
+          Property="pai/Properties[nombre_pais]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ciudad_pais">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ciudad_pais" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ciudad_pais]/Members[pais]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ciudad_pais]/Members[ciudad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_pais">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_pais" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_pais]/Members[pais]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_pais]/Members[direccion_empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_persona_pais">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_persona_pais" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_pais]/Members[pais]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_pais]/Members[direccion_persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_evento_pais1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_evento_pais" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_pais1]/Members[pais]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_pais1]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_pais" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

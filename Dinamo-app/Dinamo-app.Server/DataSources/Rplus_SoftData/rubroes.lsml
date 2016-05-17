@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="rubro">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_rubro"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="rubro1"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Descripcion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <NotSortable />
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="empresas"
+        Association="FK_empresa_rubro"
+        FromEnd="rubro"
+        ToEnd="empresa" />
+      <NavigationProperty
+        Name="Detalles_Evento_Presencials"
+        Association="FK_evento_rubro1"
+        FromEnd="rubro"
+        ToEnd="Detalles_Evento_Presencial" />
+      <NavigationProperty
+        Name="Campanhas"
+        Association="FK_Campaña_rubro"
+        FromEnd="rubro"
+        ToEnd="Campanha" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_empresa_rubro">
+    <AssociationEnd
+      Name="rubro"
+      EntityType="rubro">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="empresa"
+      Multiplicity="Many"
+      EntityType="empresa" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="rubroes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="rubro" />
+    <AssociationSet
+      Name="FK_empresa_rubro"
+      Association="FK_empresa_rubro">
+      <AssociationSetEnd
+        Name="rubro"
+        EntitySet="rubroes" />
+      <AssociationSetEnd
+        Name="empresa"
+        EntitySet="empresas" />
+    </AssociationSet>
+    <QueryOperation
+      Name="rubroes_Single"
+      ReturnType="rubro">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_rubro" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_rubro" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="rubroes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_rubro"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_rubro' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="rubroes_SingleOrDefault"
+      ReturnType="rubro">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_rubro" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_rubro" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="rubroes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_rubro"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_rubro' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_evento_rubro1"
+      Association="FK_evento_rubro1">
+      <AssociationSetEnd
+        Name="rubro"
+        EntitySet="rubroes" />
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_Campaña_rubro"
+      Association="FK_Campaña_rubro">
+      <AssociationSetEnd
+        Name="rubro"
+        EntitySet="rubroes" />
+      <AssociationSetEnd
+        Name="Campanha"
+        EntitySet="Campanhas" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_evento_rubro1">
+    <AssociationEnd
+      Name="rubro"
+      EntityType="rubro">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      Multiplicity="Many"
+      EntityType="Detalles_Evento_Presencial" />
+  </Association>
+  <Association
+    Name="FK_Campaña_rubro">
+    <AssociationEnd
+      Name="rubro"
+      EntityType="rubro">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Campanha"
+      Multiplicity="Many"
+      EntityType="Campanha" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="rubroes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="rubro" />
+        <SsdlProperty
+          Name="id_rubro"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="rubro/Properties[id_rubro]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="rubro"
+          Nullable="True"
+          Type="varchar"
+          Property="rubro/Properties[rubro1]" />
+        <SsdlProperty
+          Name="Descripcion"
+          Nullable="True"
+          Type="text"
+          Property="rubro/Properties[Descripcion]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Campaña_rubro">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Campaña_rubro" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Campaña_rubro]/Members[rubro]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_rubro" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Campaña_rubro]/Members[Campanha]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Rubros" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_empresa_rubro">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_empresa_rubro" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_empresa_rubro]/Members[rubro]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_rubro" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_empresa_rubro]/Members[empresa]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_rubro" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_evento_rubro1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_evento_rubro" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_rubro1]/Members[rubro]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_rubro" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_evento_rubro1]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_rubro_orientado" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

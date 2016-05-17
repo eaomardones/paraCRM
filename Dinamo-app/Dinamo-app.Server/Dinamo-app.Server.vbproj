@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectTypeGuids>{8BB0C5E8-0616-4F60-8E55-A43933E57E9C};{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45f6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <ProjectGuid>{14ABE696-479D-43D9-89CE-D8578AB4C6BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>Application.Server</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <LightSwitchVersion>v4.5</LightSwitchVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <SupportedCultures>en-US</SupportedCultures>
+    <FileAlignment>512</FileAlignment>
+    <LightSwitchProjectTypeV45>Server</LightSwitchProjectTypeV45>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <LightSwitchDisplayName>Server</LightSwitchDisplayName>
+    <IgnoreDeployManagedRuntimeVersion>True</IgnoreDeployManagedRuntimeVersion>
+    <UseDeclareParametersXMLInMsDeploy>False</UseDeclareParametersXMLInMsDeploy>
+    <MicrosoftSdkDir Condition=" '$(MicrosoftSdkDir)' == '' ">$([System.IO.Path]::Combine($(MSBuildProgramFiles32), 'Microsoft SDKs'))</MicrosoftSdkDir>
+    <LightSwitchSDKPath Condition=" '$(LightSwitchSDKPath)' == '' ">$([System.IO.Path]::Combine($(MicrosoftSdkDir), 'LightSwitch', $(LightSwitchVersion)))</LightSwitchSDKPath>
+    <LightSwitchSDKPath Condition=" '$(LightSwitchSDKPath)' != '' and !HasTrailingSlash('$(LightSwitchSDKPath)')">$(LightSwitchSDKPath)\</LightSwitchSDKPath>
+    <NuGetPackagesFolder Condition=" Exists('..\Packages')">..\Packages\</NuGetPackagesFolder>
+    <NuGetPackagesFolder Condition=" Exists('..\..\Packages')">..\..\Packages\</NuGetPackagesFolder>
+    <WCFRIASERVICESSDKPath Condition=" '$(WCFRIASERVICESSDKPath)' == '' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WCFRIAServices\v1.0@InstallPath)</WCFRIASERVICESSDKPath>
+    <WCFRIASERVICESSDKPath Condition=" '$(WCFRIASERVICESSDKPath)' == '' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\WCFRIAServices\v1.0@InstallPath)</WCFRIASERVICESSDKPath>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Dinamo_app.Server.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="_IntrinsicData-Deployment" Order="1">
+          <Destination Path="Data Source=ndyshb3dfa.database.windows.net%3bInitial Catalog=dinamo-app%3bIntegrated Security=False%3bUser ID=dinamo01%3bPassword=We34058855%3bConnect Timeout=60%3bEncrypt=False%3bTrustServerCertificate=False" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=|SqlExpressInstanceName|%3bAttachDbFilename=|ApplicationDatabasePath|%3bIntegrated Security=True%3bConnect Timeout=30%3bMultipleActiveResultSets=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="b0f63745-44a4-489c-b8e2-3562f8bebe66-Deployment" Order="2">
+          <Destination Path="Data Source=ndyshb3dfa.database.windows.net%3bInitial Catalog=dinamo-app%3bIntegrated Security=False%3bUser ID=dinamo01%3bPassword=We34058855%3bConnect Timeout=60%3bEncrypt=False%3bTrustServerCertificate=False" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28local%29%3bInitial Catalog=Rplus-Soft%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\b0f63745-44a4-489c-b8e2-3562f8bebe66-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Dinamo_app.Server.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
+    <PublishDatabases>false</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="_IntrinsicData-Deployment" Order="1" Enabled="False">
+          <Destination Path="Data Source=ndyshb3dfa.database.windows.net%3bInitial Catalog=dinamo-app%3bUser ID=dinamo01%3bPassword=We34058855%40" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28local%29%3bInitial Catalog=Rplus-Soft%3bIntegrated Security=True%3bMultipleActiveResultSets=True%3bConnect Timeout=30" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="b0f63745-44a4-489c-b8e2-3562f8bebe66-Deployment" Order="2" Enabled="False">
+          <Destination Path="Data Source=ndyshb3dfa.database.windows.net%3bInitial Catalog=dinamo-app%3bUser ID=dinamo01%3bPassword=We34058855" />
+          <Object Type="DbFullSql" Enabled="True">
+            <PreSource Path="Data Source=%28local%29%3bInitial Catalog=Rplus-Soft%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\b0f63745-44a4-489c-b8e2-3562f8bebe66-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Xml" />
+    <Import Include="System.Net" />
+    <Import Include="System.Web" />
+    <Import Include="Microsoft.LightSwitch" />
+    <Import Include="Microsoft.LightSwitch.Framework" />
+    <Import Include="Microsoft.LightSwitch.Security.Server" />
+    <Import Include="LightSwitchApplication" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.LightSwitch.Extensions.Server">
+      <HintPath>..\_Pvt_Extensions\Microsoft.LightSwitch.Extensions\Server\Reference\Microsoft.LightSwitch.Extensions.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Core">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Data">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Web">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch">
+      <HintPath>$(LightSwitchSDKPath)\Client\Microsoft.LightSwitch.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.AppBridge">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.AppBridge.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.ExportProvider, Version=10.0.12.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>$(LightSwitchSDKPath)\Client\Microsoft.LightSwitch.ExportProvider.dll</HintPath>
+      <SpecificVersion>True</SpecificVersion>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.CodeMarker, Version=12.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>$(LightSwitchSDKPath)\Client\Microsoft.LightSwitch.CodeMarker.dll</HintPath>
+      <SpecificVersion>True</SpecificVersion>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.ManifestService">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.ManifestService.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.Model.Xaml">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.Model.Xaml.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.Server">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.Server.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.LightSwitch.Server.Host">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.Server.Host.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ServiceModel.PollingDuplex">
+      <HintPath>$(LightSwitchSDKPath)\Server\System.ServiceModel.PollingDuplex.dll</HintPath>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.Data.Services.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>$(NuGetPackagesFolder)\System.IdentityModel.Tokens.Jwt.1.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Spatial">
+      <HintPath>$(LightSwitchSDKPath)\Server\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.EntityFramework">
+      <HintPath>$(WCFRIASERVICESSDKPath)\v1.0\Libraries\Server\System.ServiceModel.DomainServices.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Hosting">
+      <HintPath>$(WCFRIASERVICESSDKPath)\v1.0\Libraries\Server\System.ServiceModel.DomainServices.Hosting.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Hosting.OData">
+      <HintPath>$(WCFRIASERVICESSDKPath)\v1.0\Libraries\Server\System.ServiceModel.DomainServices.Hosting.OData.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.ServiceModel.DomainServices.Server">
+      <HintPath>$(WCFRIASERVICESSDKPath)\v1.0\Libraries\Server\System.ServiceModel.DomainServices.Server.dll</HintPath>
+      <Private>True</Private>
+      <ProjectCritical>True</ProjectCritical>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\OlapController.vb" />
+    <Compile Include="DataSources\Rplus_SoftData\empresa.lsml.vb">
+      <DependentUpon>empresas.lsml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\Rplus_SoftData\telefono.lsml.vb">
+      <DependentUpon>telefonoes.lsml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\Rplus_SoftData\VendedorCliente.lsml.vb">
+      <DependentUpon>VendedorClientes.lsml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\Rplus_SoftData\_Rplus_SoftDataService.lsml.vb" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Adjuntoempresas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\AdjuntoPersonas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\ciudads.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\direccion_empresas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\direccion_personas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\empresas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\grupo_contactoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\pais.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\personas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\responsables.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\rubroes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\telefonoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\tipo_contactoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\tipo_tels.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\vendedors.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\ResponsableEmpresas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\ResponsablePersonas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Clientes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Forma_pagoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\VendedorClientes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\ResponsableClientes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Tipo_cargoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Tipo_Tituloes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\TipoImpuestoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Query1.lsml">
+      <DependentUpon>VendedorClientes.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\asistencias.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\estado_confirmacions.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\gestiones.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\seguimientoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\tipo_eventoes.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\actividads.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Detalles_Evento_Presencials.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Evento_Presencial_Agenda.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Evento_Presencial_Sesiones.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\repositorios.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\tipo_estado_actividads.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\tipo_gestions.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Campanhas.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Tipo_Actividads.lsml" />
+    <LightSwitchModel Include="DataSources\Rplus_SoftData\Direccion_persona_tipoes.lsml" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <LightSwitchModel Include="My Project\DataSources\Rplus_SoftData.lsml" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <_ServerFile Include="LogIn.aspx" />
+    <_ServerFile Include="LogOut.aspx" />
+    <None Include="Scripts\amplify-vsdoc.js" />
+    <Content Include="API\OlapController.cs" />
+    <Content Include="Content\c1ls-dark-4.0.20142.36.css" />
+    <Content Include="Content\c1ls-light-4.0.20142.36.css" />
+    <Content Include="Content\dark-theme-1.0.1.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\icons-18-black.png" />
+    <Content Include="Content\images\icons-18-white.png" />
+    <Content Include="Content\images\icons-36-black.png" />
+    <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\msls-black-icons-18.png" />
+    <Content Include="Content\images\msls-black-icons-36.png" />
+    <Content Include="Content\images\msls-loader-dark.gif" />
+    <Content Include="Content\images\msls-loader-light.gif" />
+    <Content Include="Content\images\msls-white-icons-18.png" />
+    <Content Include="Content\images\msls-white-icons-36.png" />
+    <Content Include="Content\images\ui-anim_basic_16x16-branch.gif" />
+    <Content Include="Content\images\user-splash-screen.png" />
+    <Content Include="Content\images\waiting.gif" />
+    <Content Include="Content\images\wijeditor\wijmo-ui-editor-colormarker.png" />
+    <Content Include="Content\images\wijeditor\wijmo-ui-editor-colormask.png" />
+    <Content Include="Content\images\wijeditor\wijmo-ui-editor-colorwheel.png" />
+    <Content Include="Content\images\wijeditor\wijmo-ui-icons_000000_240x112.png" />
+    <Content Include="Content\images\wijeditor\wijmo-ui-icons_ffffff_240x112.png" />
+    <Content Include="Content\images\wijrating\wijmo-ui-rating.png" />
+    <Content Include="Content\jquery.mobile-1.3.2.css" />
+    <Content Include="Content\jquery.mobile-1.3.2.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.2.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.2.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.2.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.2.min.css" />
+    <Content Include="Content\jquery.wijmo-pro.all.3.20142.45.min.css" />
+    <Content Include="Content\light-theme-1.0.1.css" />
+    <Content Include="Content\msls-1.0.1.css" />
+    <Content Include="Content\msls-1.0.1.min.css" />
+    <Content Include="Content\msls-dark-1.0.1.css" />
+    <Content Include="Content\msls-light-1.0.1.css" />
+    <Content Include="default-1.0.1.htm" />
+    <Content Include="default-2.0.0.htm" />
+    <Content Include="default-2.5.0.htm" />
+    <Content Include="default-2.5.1.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="Global.asax.cs" />
+    <Content Include="Scripts\amplify.js" />
+    <Content Include="Scripts\amplify.min.js" />
+    <Content Include="Scripts\c1ls-4.0.20142.36.js" />
+    <Content Include="Scripts\datajs-1.1.0.js" />
+    <Content Include="Scripts\datajs-1.1.0.min.js" />
+    <Content Include="Scripts\GPL-LICENSE.txt" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.mobile-1.3.0-vsdoc.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.2.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.2.min.js" />
+    <Content Include="Scripts\jquery.wijmo-open.all.3.20142.45.min.js" />
+    <Content Include="Scripts\jquery.wijmo-pro.all.3.20142.45.min.js" />
+    <Content Include="Scripts\MIT-LICENSE.txt" />
+    <None Include="Scripts\msls-1.0.1-vsdoc.js" />
+    <None Include="Scripts\msls-1.0.0-vsdoc.js" />
+    <Content Include="Scripts\msls-1.0.1.js" />
+    <Content Include="Scripts\msls-1.0.1.min.js" />
+    <Content Include="Scripts\README.txt" />
+    <Content Include="Scripts\winjs-1.0.js" />
+    <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery.mobile-1.3.2.min.map" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <_ServerFile Include="default.aspx" />
+    <Compile Include="default.aspx.vb">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.vb">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <LightSwitchModel Include="My Project\Service.lsml">
+      <ProjectCritical>true</ProjectCritical>
+    </LightSwitchModel>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\$(LightSwitchVersion)\Microsoft.LightSwitch.Build.Tasks.targets" />
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63417/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{8BB0C5E8-0616-4F60-8E55-A43933E57E9C}" Configuration="Debug|Any CPU">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+      <FlavorProperties GUID="{8BB0C5E8-0616-4F60-8E55-A43933E57E9C}" Configuration="Release|Any CPU">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

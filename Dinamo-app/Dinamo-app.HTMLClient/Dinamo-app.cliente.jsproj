@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
+    <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ae22564d-6437-4eac-b533-9564557636dd}</ProjectGuid>
+    <LightSwitchVersion>v4.5</LightSwitchVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.props" />
+  <PropertyGroup>
+    <!--TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion-->
+    <LightSwitchProjectTypeV45>Client</LightSwitchProjectTypeV45>
+    <LightSwitchProjectSubType>JScript</LightSwitchProjectSubType>
+    <ProjectTypeGuids>{8BB0C5E8-0616-4F60-8E55-A43933E57E9C};{262852c6-cd72-467d-83fe-5eeb1973a190}</ProjectTypeGuids>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <SupportedCultures>en-US</SupportedCultures>
+    <DefaultPlatform>AnyCPU</DefaultPlatform>
+    <ClientProjectName>HTMLClient</ClientProjectName>
+    <ServerProjectReference>..\Dinamo-app.Server\Dinamo-app.Server.vbproj</ServerProjectReference>
+    <LightSwitchDisplayName>HTMLClient</LightSwitchDisplayName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\c1ls-dark-4.0.20143.39.css" />
+    <Content Include="Content\c1ls-light-4.0.20143.39.css" />
+    <Content Include="Content\d3ls-dark-4.0.20143.39.css" />
+    <Content Include="Content\d3ls-light-4.0.20143.39.css" />
+    <Content Include="Content\dark-theme-2.5.2.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\icons-18-black.png" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\icons-36-black.png" />
+    <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\msls-black-icons-18.png" />
+    <Content Include="Content\Images\msls-black-icons-36.png" />
+    <Content Include="Content\Images\msls-loader-dark.gif" />
+    <Content Include="Content\Images\msls-loader-light.gif" />
+    <Content Include="Content\Images\msls-white-icons-18.png" />
+    <Content Include="Content\Images\msls-white-icons-36.png" />
+    <Content Include="Content\Images\msls-blue-icons-36.png" />
+    <Content Include="Content\Images\ui-anim_basic_16x16-branch.gif" />
+    <Content Include="Content\Images\waiting.gif" />
+    <Content Include="Content\Images\wijeditor\wijmo-ui-editor-colormarker.png" />
+    <Content Include="Content\Images\wijeditor\wijmo-ui-editor-colormask.png" />
+    <Content Include="Content\Images\wijeditor\wijmo-ui-editor-colorwheel.png" />
+    <Content Include="Content\Images\wijeditor\wijmo-ui-icons_000000_240x112.png" />
+    <Content Include="Content\Images\wijeditor\wijmo-ui-icons_ffffff_240x112.png" />
+    <Content Include="Content\Images\wijrating\wijmo-ui-rating.png" />
+    <Content Include="Content\jquery.mobile-1.3.2.css" />
+    <Content Include="Content\jquery.mobile-1.3.2.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.2.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.2.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.2.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.2.min.css" />
+    <Content Include="Content\jquery.wijmo-pro.all.3.20142.48.min.css" />
+    <Content Include="Content\light-theme-2.5.2.css" />
+    <Content Include="Content\msls-2.5.2.css" />
+    <Content Include="Content\msls-2.5.2.min.css" />
+    <Content Include="Content\msls-dark-2.5.2.css" />
+    <Content Include="Content\msls-light-2.5.2.css" />
+    <Content Include="default-1.0.1.htm" />
+    <Content Include="default-2.0.0.htm" />
+    <Content Include="default-2.5.0.htm" />
+    <Content Include="default-2.5.1.htm" />
+    <Content Include="default-2.5.2.htm" />
+    <Content Include="Content\user-customization.css" />
+    <Content Include="Content\Images\user-logo.png" />
+    <Content Include="Content\Images\user-logo.ico" />
+    <Content Include="Content\Images\user-logo-144.png" />
+    <Content Include="Content\Images\user-splash-screen.png" />
+    <Content Include="Content\Web.config" />
+    <Content Include="default.htm" />
+    <Content Include="packages.config" />
+    <Content Include="Screens\Clientes\AddEditCliente.lsml.js">
+      <DependentUpon>AddEditCliente.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Clientes\ViewCliente.lsml.js">
+      <DependentUpon>ViewCliente.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Empleados\Responsables\Viewresponsable.lsml.js">
+      <DependentUpon>Viewresponsable.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Empleados\Vendedores\Viewvendedor.lsml.js">
+      <DependentUpon>Viewvendedor.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Empleados\ViewVendedorCliente.lsml.js">
+      <DependentUpon>ViewVendedorCliente.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\empresas\Browseempresas.lsml.js">
+      <DependentUpon>Browseempresas.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\empresas\Datos de Empresa\Home.lsml.js">
+      <DependentUpon>Home.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\empresas\Viewempresa.lsml.js">
+      <DependentUpon>Viewempresa.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Eventos\Actividad\Presencial\ViewDetalles_Evento_Presencial.lsml.js">
+      <DependentUpon>ViewDetalles_Evento_Presencial.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Eventos\Actividad\Viewactividad.lsml.js">
+      <DependentUpon>Viewactividad.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Eventos\Campaña\ViewCampanha.lsml.js">
+      <DependentUpon>ViewCampanha.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Eventos\Datos de Actividad\AddEdittipo_estado_actividad.lsml.js">
+      <DependentUpon>AddEdittipo_estado_actividad.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Eventos\Seguimiento\Viewseguimiento.lsml.js">
+      <DependentUpon>Viewseguimiento.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Parametros\Personas\BrowseTipo_cargoes.lsml.js">
+      <DependentUpon>BrowseTipo_cargoes.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\personas\Browsepersonas.lsml.js">
+      <DependentUpon>Browsepersonas.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\personas\Datos de Persona\AddEdittelefono.lsml.js">
+      <DependentUpon>AddEdittelefono.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\personas\Viewpersona.lsml.js">
+      <DependentUpon>Viewpersona.lsml</DependentUpon>
+    </Content>
+    <Content Include="Scripts\amplify-vsdoc.js" />
+    <Content Include="Scripts\amplify.js" />
+    <Content Include="Scripts\amplify.min.js" />
+    <Content Include="Scripts\c1ls-4.0.20143.39.js" />
+    <Content Include="Scripts\colorbrewer.v1.js" />
+    <Content Include="Scripts\D3-LICENSE.txt" />
+    <Content Include="Scripts\d3.v3.js" />
+    <Content Include="Scripts\d3ls-4.0.20143.39.js" />
+    <Content Include="Scripts\datajs-1.1.1.js" />
+    <Content Include="Scripts\datajs-1.1.1.min.js" />
+    <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0-vsdoc.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.2.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.2.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.2.min.map" />
+    <Content Include="Scripts\jquery.wijmo-open.all.3.20142.48.min.js" />
+    <Content Include="Scripts\jquery.wijmo-pro.all.3.20142.48.min.js" />
+    <Content Include="Scripts\MIT-LICENSE.txt" />
+    <Content Include="Scripts\msls.js" />
+    <Content Include="Scripts\msls-2.5.2-vsdoc.js" />
+    <Content Include="Scripts\msls-2.5.2.js" />
+    <Content Include="Scripts\msls-2.5.2.min.js" />
+    <Content Include="Scripts\README.txt" />
+    <Content Include="Scripts\winjs-1.0.js" />
+    <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="UserCode\telefono.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\tipo_estado_actividad.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceMetadataReference Include="..\Dinamo-app.Server\Dinamo-app.Server.vbproj">
+      <Visible>false</Visible>
+    </ServiceMetadataReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LightSwitchModel Include="Properties\Client.lsml">
+      <ProjectCritical>true</ProjectCritical>
+    </LightSwitchModel>
+    <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\actividads.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\asistencias.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\Campanhas.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\Clientes.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\Detalles_Evento_Presencials.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\empresas.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\personas.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\responsables.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\seguimientoes.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\VendedorClientes.lsml" />
+    <LightSwitchModel Include="Properties\Rplus_SoftData\vendedors.lsml" />
+    <LightSwitchModel Include="Screens\Clientes\AddEditCliente.lsml" />
+    <LightSwitchModel Include="Screens\Clientes\BrowseClientes.lsml" />
+    <LightSwitchModel Include="Screens\Clientes\ViewCliente.lsml" />
+    <LightSwitchModel Include="Screens\Consultas\Globales\Browseseguimientoes_general.lsml" />
+    <LightSwitchModel Include="Screens\Consultas\Personas\Browsepersonas1.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\AddEditVendedorCliente.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\BrowseVendedorClientes.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Responsables\AddEditresponsable.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Responsables\Browseresponsables.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Responsables\Viewresponsable.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Vendedores\AddEditvendedor.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Vendedores\Browsevendedors.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\Vendedores\Viewvendedor.lsml" />
+    <LightSwitchModel Include="Screens\Empleados\ViewVendedorCliente.lsml" />
+    <LightSwitchModel Include="Screens\empresas\AddEditempresa.lsml" />
+    <LightSwitchModel Include="Screens\empresas\Browseempresas.lsml" />
+    <LightSwitchModel Include="Screens\empresas\Datos de Empresa\AddEditAdjuntoempresa.lsml" />
+    <LightSwitchModel Include="Screens\empresas\Datos de Empresa\AddEditdireccion_empresa.lsml" />
+    <LightSwitchModel Include="Screens\empresas\Datos de Empresa\Home.lsml" />
+    <LightSwitchModel Include="Screens\empresas\Viewempresa.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\AddEditactividad.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\Browseactividads.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\Presencial\AddEditDetalles_Evento_Presencial.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\Presencial\BrowseDetalles_Evento_Presencials.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\Presencial\ViewDetalles_Evento_Presencial.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Actividad\Viewactividad.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Asistencia\AddEditasistencia.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Asistencia\Viewasistencia.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Campaña\AddEditCampanha.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Campaña\BrowseCampanhas.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Campaña\ViewCampanha.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Actividad\AddEditTipo_Actividad.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Actividad\AddEdittipo_estado_actividad.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Actividad\BrowseTipo_Actividads.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Actividad\Browsetipo_estado_actividads.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Evento\AddEditevento_sesione.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Evento\AddEdittipo_evento.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Evento\Browseevento_sesiones.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Datos de Evento\Browsetipo_eventoes.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Seguimiento\AddEditseguimiento.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Seguimiento\Browseseguimientoes.lsml" />
+    <LightSwitchModel Include="Screens\Eventos\Seguimiento\Viewseguimiento.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Campaña\AddEdittipo_gestion.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Campaña\Browsetipo_gestions.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\AddEditForma_pago.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\AddEditgrupo_contacto.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\AddEditTipoImpuesto.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\AddEdittipo_contacto.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\BrowseForma_pagoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\Browsegrupo_contactoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\BrowseTipoImpuestoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Clientes\Browsetipo_contactoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Empresas\AddEditrubro.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Empresas\Browserubroes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Eventos\AddEditgestione.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Eventos\Browsegestiones.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\AddEditciudad.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\AddEditpai.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\AddEdittipo_tel.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\Browseciudads.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\Browsepais.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Generales\Browsetipo_tels.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\AddEditDireccion_persona_tipo.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\AddEditTipo_cargo.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\AddEditTipo_Titulo.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\BrowseDireccion_persona_tipoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\BrowseTipo_cargoes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Personas\BrowseTipo_Tituloes.lsml" />
+    <LightSwitchModel Include="Screens\Parametros\Responsable\AddEditResponsableCliente.lsml" />
+    <LightSwitchModel Include="Screens\personas\AddEditpersona.lsml" />
+    <LightSwitchModel Include="Screens\personas\Browsepersonas.lsml" />
+    <LightSwitchModel Include="Screens\personas\Datos de Persona\AddEditAdjuntoPersona.lsml" />
+    <LightSwitchModel Include="Screens\personas\Datos de Persona\AddEditdireccion_persona.lsml" />
+    <LightSwitchModel Include="Screens\personas\Datos de Persona\AddEdittelefono.lsml" />
+    <LightSwitchModel Include="Screens\personas\Viewpersona.lsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ClientBuildFile Include="GeneratedArtifacts\model.json">
+      <SubFolder>Content\Resources\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\data.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\viewModel.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\usercode.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\resources.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="admin\" />
+    <Folder Include="Screens\Consultas\Clientes\" />
+    <Folder Include="Screens\Consultas\Estadisticas\" />
+    <Folder Include="Screens\Consultas\Eventos\" />
+    <Folder Include="Screens\Consultas\Seguimiento\" />
+    <Folder Include="Screens\Consultas\NoClientes\" />
+    <Folder Include="Screens\Eventos\Sesiones\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />
+  <!-- Redefine the targets to be empty -->
+  <Target Name="GetXapOutputFile" />
+  <PropertyGroup>
+    <AppxPackage>false</AppxPackage>
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

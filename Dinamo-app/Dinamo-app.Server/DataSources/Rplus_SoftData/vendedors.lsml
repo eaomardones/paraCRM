@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="vendedor">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_vendedor"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="apellido"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <DisplayName
+            Value="Apellido" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="email"
+        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="telefono"
+        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="20" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Clientes"
+        Association="FK_Clientes_vendedor"
+        FromEnd="vendedor"
+        ToEnd="Clientes" />
+      <NavigationProperty
+        Name="VendedorClientes1"
+        Association="FK_VendedorEmpresa_vendedor"
+        FromEnd="vendedor"
+        ToEnd="VendedorCliente" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="vendedors"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="vendedor" />
+    <QueryOperation
+      Name="vendedors_Single"
+      ReturnType="vendedor">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_vendedor" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_vendedor" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="vendedors" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_vendedor"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_vendedor' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="vendedors_SingleOrDefault"
+      ReturnType="vendedor">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_vendedor" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_vendedor" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="vendedors" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_vendedor"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_vendedor' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_Clientes_vendedor"
+      Association="FK_Clientes_vendedor">
+      <AssociationSetEnd
+        Name="vendedor"
+        EntitySet="vendedors" />
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_VendedorEmpresa_vendedor"
+      Association="FK_VendedorEmpresa_vendedor">
+      <AssociationSetEnd
+        Name="vendedor"
+        EntitySet="vendedors" />
+      <AssociationSetEnd
+        Name="VendedorCliente"
+        EntitySet="VendedorClientes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_Clientes_vendedor">
+    <AssociationEnd
+      Name="vendedor"
+      Multiplicity="One"
+      EntityType="vendedor">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="Many"
+      EntityType="Cliente" />
+  </Association>
+  <Association
+    Name="FK_VendedorEmpresa_vendedor">
+    <AssociationEnd
+      Name="vendedor"
+      Multiplicity="One"
+      EntityType="vendedor">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="VendedorCliente"
+      Multiplicity="Many"
+      EntityType="VendedorCliente" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="vendedors">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="vendedor" />
+        <SsdlProperty
+          Name="id_vendedor"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="vendedor/Properties[id_vendedor]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="nombre"
+          Nullable="True"
+          Type="varchar"
+          Property="vendedor/Properties[nombre]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="apellido"
+          Nullable="True"
+          Type="varchar"
+          Property="vendedor/Properties[apellido]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="email"
+          Nullable="True"
+          Type="varchar"
+          Property="vendedor/Properties[email]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="telefono"
+          Nullable="True"
+          Type="nchar"
+          Property="vendedor/Properties[telefono]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Clientes_vendedor">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Clientes_vendedor" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_vendedor]/Members[vendedor]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_vendedor" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Clientes_vendedor]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="vendedor_prin" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_VendedorEmpresa_vendedor">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_VendedorEmpresa_vendedor" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_VendedorEmpresa_vendedor]/Members[vendedor]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_vendedor" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_VendedorEmpresa_vendedor]/Members[VendedorCliente]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_Vendedor" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

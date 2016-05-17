@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.Dinamo_app.HTMLClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:seguimiento" />
+      <DefaultScreen
+        Value="Viewseguimiento">
+        <DefaultScreen.Attributes>
+          <ScreenParameterMapping
+            ScreenParameter="Viewseguimiento/Properties[seguimiento]" />
+        </DefaultScreen.Attributes>
+      </DefaultScreen>
+      <SummaryProperty
+        Property="seguimiento/Properties[fecha_contacto]" />
+    </EntityType.Attributes>
+  </EntityType>
+</Application>

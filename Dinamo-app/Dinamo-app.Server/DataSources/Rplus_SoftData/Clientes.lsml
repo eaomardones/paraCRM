@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Cliente">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_cliente"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="es_retentor"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="cc_asignada"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="10" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="empresa"
+        Association="FK_Clientes_empresa"
+        FromEnd="Clientes"
+        ToEnd="empresa" />
+      <NavigationProperty
+        Name="vendedor"
+        Association="FK_Clientes_vendedor"
+        FromEnd="Clientes"
+        ToEnd="vendedor" />
+      <NavigationProperty
+        Name="Forma_pago1"
+        Association="FK_Clientes_Forma_pago"
+        FromEnd="Clientes"
+        ToEnd="Forma_pago" />
+      <NavigationProperty
+        Name="VendedorClientes"
+        Association="FK_VendedorCliente_Clientes"
+        FromEnd="Clientes"
+        ToEnd="VendedorCliente" />
+      <NavigationProperty
+        Name="responsable"
+        Association="FK_Clientes_responsable"
+        FromEnd="Clientes"
+        ToEnd="responsable" />
+      <NavigationProperty
+        Name="ResponsableClientes"
+        Association="FK_ResponsableCliente_Clientes"
+        FromEnd="Clientes"
+        ToEnd="ResponsableCliente" />
+      <NavigationProperty
+        Name="TipoImpuesto"
+        Association="FK_Clientes_TipoImpuesto"
+        FromEnd="Clientes"
+        ToEnd="TipoImpuesto" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Clientes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Cliente" />
+    <QueryOperation
+      Name="Clientes_Single"
+      ReturnType="Cliente">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_cliente" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_cliente" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Clientes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_cliente"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_cliente' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Clientes_SingleOrDefault"
+      ReturnType="Cliente">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_cliente" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_cliente" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Clientes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_cliente"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_cliente' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_VendedorCliente_Clientes"
+      Association="FK_VendedorCliente_Clientes">
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+      <AssociationSetEnd
+        Name="VendedorCliente"
+        EntitySet="VendedorClientes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ResponsableCliente_Clientes"
+      Association="FK_ResponsableCliente_Clientes">
+      <AssociationSetEnd
+        Name="Clientes"
+        EntitySet="Clientes" />
+      <AssociationSetEnd
+        Name="ResponsableCliente"
+        EntitySet="ResponsableClientes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_VendedorCliente_Clientes">
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="One"
+      EntityType="Cliente">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="VendedorCliente"
+      Multiplicity="Many"
+      EntityType="VendedorCliente" />
+  </Association>
+  <Association
+    Name="FK_ResponsableCliente_Clientes">
+    <AssociationEnd
+      Name="Clientes"
+      Multiplicity="One"
+      EntityType="Cliente">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsableCliente"
+      Multiplicity="Many"
+      EntityType="ResponsableCliente" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Clientes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Clientes" />
+        <SsdlProperty
+          Name="id_cliente"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="Cliente/Properties[id_cliente]" />
+        <SsdlProperty
+          Name="es_retentor"
+          Nullable="False"
+          Type="bit"
+          Property="Cliente/Properties[es_retentor]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="cc_asignada"
+          Nullable="True"
+          Type="nchar"
+          Property="Cliente/Properties[cc_asignada]" />
+        <SsdlForeignKeyProperty
+          Name="id_empresa"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_empresa" />
+        <SsdlForeignKeyProperty
+          Name="forma_pago"
+          Nullable="False"
+          Type="int"
+          PropertyName="forma_pago" />
+        <SsdlForeignKeyProperty
+          Name="responsable_prin"
+          Nullable="False"
+          Type="int"
+          PropertyName="responsable_prin" />
+        <SsdlForeignKeyProperty
+          Name="tipo_imp"
+          Nullable="False"
+          Type="int"
+          PropertyName="tipo_imp" />
+        <SsdlForeignKeyProperty
+          Name="vendedor_prin"
+          Nullable="False"
+          Type="int"
+          PropertyName="vendedor_prin" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsableCliente_Clientes">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsableCliente_Clientes" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableCliente_Clientes]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_cliente" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsableCliente_Clientes]/Members[ResponsableCliente]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_cliente" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_VendedorCliente_Clientes">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_VendedorCliente_Clientes" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_VendedorCliente_Clientes]/Members[Clientes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_cliente" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_VendedorCliente_Clientes]/Members[VendedorCliente]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_Cliente" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="actividad">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_actividad"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_inicio"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_fin"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="indefinido"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="presencial"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="seguimientoes"
+        Association="FK_seguimiento_actividad"
+        FromEnd="actividad"
+        ToEnd="seguimiento" />
+      <NavigationProperty
+        Name="Campanha"
+        Association="FK_actividad_Campaña"
+        FromEnd="actividad"
+        ToEnd="Campanha" />
+      <NavigationProperty
+        Name="tipo_estado_actividad"
+        Association="FK_actividad_tipo_estado_actividad"
+        FromEnd="actividad"
+        ToEnd="tipo_estado_actividad" />
+      <NavigationProperty
+        Name="Tipo_Actividad1"
+        Association="FK_actividad_Tipo_Actividad"
+        FromEnd="actividad"
+        ToEnd="Tipo_Actividad" />
+      <NavigationProperty
+        Name="Detalles_Evento_Presencials"
+        Association="FK_Detalles_Evento_Presencial_actividad"
+        FromEnd="actividad"
+        ToEnd="Detalles_Evento_Presencial" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_seguimiento_actividad">
+    <AssociationEnd
+      Name="actividad"
+      Multiplicity="One"
+      EntityType="actividad">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="seguimiento"
+      Multiplicity="Many"
+      EntityType="seguimiento" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="actividads"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="actividad" />
+    <AssociationSet
+      Name="FK_seguimiento_actividad"
+      Association="FK_seguimiento_actividad">
+      <AssociationSetEnd
+        Name="actividad"
+        EntitySet="actividads" />
+      <AssociationSetEnd
+        Name="seguimiento"
+        EntitySet="seguimientoes" />
+    </AssociationSet>
+    <QueryOperation
+      Name="actividads_Single"
+      ReturnType="actividad">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_actividad" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_actividad" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="actividads" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_actividad"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_actividad' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="actividads_SingleOrDefault"
+      ReturnType="actividad">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_actividad" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_actividad" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="actividads" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_actividad"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_actividad' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_Detalles_Evento_Presencial_actividad"
+      Association="FK_Detalles_Evento_Presencial_actividad">
+      <AssociationSetEnd
+        Name="actividad"
+        EntitySet="actividads" />
+      <AssociationSetEnd
+        Name="Detalles_Evento_Presencial"
+        EntitySet="Detalles_Evento_Presencials" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_Detalles_Evento_Presencial_actividad">
+    <AssociationEnd
+      Name="actividad"
+      EntityType="actividad">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Detalles_Evento_Presencial"
+      Multiplicity="Many"
+      EntityType="Detalles_Evento_Presencial" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="actividads">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="actividad" />
+        <SsdlProperty
+          Name="id_actividad"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="actividad/Properties[id_actividad]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="nombre"
+          Nullable="False"
+          Type="varchar"
+          Property="actividad/Properties[nombre]" />
+        <SsdlProperty
+          Name="fecha_inicio"
+          Nullable="False"
+          Type="date"
+          Property="actividad/Properties[fecha_inicio]" />
+        <SsdlProperty
+          Name="fecha_fin"
+          Nullable="True"
+          Type="date"
+          Property="actividad/Properties[fecha_fin]" />
+        <SsdlProperty
+          Name="indefinido"
+          Nullable="False"
+          Type="bit"
+          Property="actividad/Properties[indefinido]" />
+        <SsdlProperty
+          Name="presencial"
+          Nullable="False"
+          Type="bit"
+          Property="actividad/Properties[presencial]" />
+        <SsdlForeignKeyProperty
+          Name="id_campaña"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_campaña" />
+        <SsdlForeignKeyProperty
+          Name="tipo_actividad"
+          Nullable="False"
+          Type="int"
+          PropertyName="tipo_actividad" />
+        <SsdlForeignKeyProperty
+          Name="id_estado"
+          Nullable="False"
+          Type="int"
+          PropertyName="id_estado" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Detalles_Evento_Presencial_actividad">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Detalles_Evento_Presencial_actividad" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Detalles_Evento_Presencial_actividad]/Members[actividad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_actividad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_Detalles_Evento_Presencial_actividad]/Members[Detalles_Evento_Presencial]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_actividad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_seguimiento_actividad">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_seguimiento_actividad" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_actividad]/Members[actividad]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_actividad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_actividad]/Members[seguimiento]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_actividad" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

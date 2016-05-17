@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="persona">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="id_persona"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="nombre"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="apellido"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="100" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="es_potencial"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="es_cliente"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="email"
+        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="200" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="fecha_carga"
+        IsReadOnly="True"
+        PropertyType=":RowVersion?">
+        <EntityProperty.Attributes>
+          <Hidden />
+          <UseForConcurrency />
+          <MaxLength
+            IsFixedLength="True"
+            Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="AdjuntoPersonas"
+        Association="FK_AdjuntoPersona_persona"
+        FromEnd="persona"
+        ToEnd="AdjuntoPersona" />
+      <NavigationProperty
+        Name="direccion_personas"
+        Association="FK_direccion_persona_persona"
+        FromEnd="persona"
+        ToEnd="direccion_persona" />
+      <NavigationProperty
+        Name="empresa"
+        Association="FK_persona_empresa"
+        FromEnd="persona"
+        ToEnd="empresa" />
+      <NavigationProperty
+        Name="grupo_contacto"
+        Association="FK_persona_grupo_contacto"
+        FromEnd="persona"
+        ToEnd="grupo_contacto" />
+      <NavigationProperty
+        Name="tipo_contacto"
+        Association="FK_persona_tipo_contacto"
+        FromEnd="persona"
+        ToEnd="tipo_contacto" />
+      <NavigationProperty
+        Name="telefonoes"
+        Association="FK_telefono_persona"
+        FromEnd="persona"
+        ToEnd="telefono" />
+      <NavigationProperty
+        Name="ResponsablePersonas"
+        Association="FK_ResponsablePersona_persona"
+        FromEnd="persona"
+        ToEnd="ResponsablePersona" />
+      <NavigationProperty
+        Name="Tipo_cargo"
+        Association="FK_persona_Tipo_cargo"
+        FromEnd="persona"
+        ToEnd="Tipo_cargo" />
+      <NavigationProperty
+        Name="Tipo_Titulo"
+        Association="FK_persona_Tipo_Titulo"
+        FromEnd="persona"
+        ToEnd="Tipo_Titulo" />
+      <NavigationProperty
+        Name="asistencias"
+        Association="FK_asistencia_persona"
+        FromEnd="persona"
+        ToEnd="asistencia" />
+      <NavigationProperty
+        Name="seguimientoes"
+        Association="FK_seguimiento_persona"
+        FromEnd="persona"
+        ToEnd="seguimiento" />
+      <EntityProperty
+        Name="FechaNacimiento"
+        IsReadOnly="True"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Computed />
+          <NotSearchable />
+          <NotSortable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FechaCumpleaños"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_AdjuntoPersona_persona">
+    <AssociationEnd
+      Name="persona"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="AdjuntoPersona"
+      Multiplicity="Many"
+      EntityType="AdjuntoPersona" />
+  </Association>
+  <Association
+    Name="FK_direccion_persona_persona">
+    <AssociationEnd
+      Name="persona"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="direccion_persona"
+      Multiplicity="Many"
+      EntityType="direccion_persona" />
+  </Association>
+  <Association
+    Name="FK_telefono_persona">
+    <AssociationEnd
+      Name="persona"
+      Multiplicity="One"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="telefono"
+      Multiplicity="Many"
+      EntityType="telefono" />
+  </Association>
+  <EntityContainer
+    Name="Rplus_SoftData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="personas"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="persona" />
+    <AssociationSet
+      Name="FK_AdjuntoPersona_persona"
+      Association="FK_AdjuntoPersona_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="AdjuntoPersona"
+        EntitySet="AdjuntoPersonas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_direccion_persona_persona"
+      Association="FK_direccion_persona_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="direccion_persona"
+        EntitySet="direccion_personas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_telefono_persona"
+      Association="FK_telefono_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="telefono"
+        EntitySet="telefonoes" />
+    </AssociationSet>
+    <QueryOperation
+      Name="personas_Single"
+      ReturnType="persona">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_persona" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_persona" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="personas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_persona"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_persona' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="personas_SingleOrDefault"
+      ReturnType="persona">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="id_persona" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="id_persona" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="personas" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="id_persona"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'id_persona' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="FK_ResponsablePersona_persona"
+      Association="FK_ResponsablePersona_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="ResponsablePersona"
+        EntitySet="ResponsablePersonas" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_asistencia_persona"
+      Association="FK_asistencia_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="asistencia"
+        EntitySet="asistencias" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_seguimiento_persona"
+      Association="FK_seguimiento_persona">
+      <AssociationSetEnd
+        Name="persona"
+        EntitySet="personas" />
+      <AssociationSetEnd
+        Name="seguimiento"
+        EntitySet="seguimientoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="FK_ResponsablePersona_persona">
+    <AssociationEnd
+      Name="persona"
+      Multiplicity="One"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ResponsablePersona"
+      Multiplicity="Many"
+      EntityType="ResponsablePersona" />
+  </Association>
+  <Association
+    Name="FK_asistencia_persona">
+    <AssociationEnd
+      Name="persona"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="asistencia"
+      Multiplicity="Many"
+      EntityType="asistencia" />
+  </Association>
+  <Association
+    Name="FK_seguimiento_persona">
+    <AssociationEnd
+      Name="persona"
+      Multiplicity="One"
+      EntityType="persona">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="seguimiento"
+      Multiplicity="Many"
+      EntityType="seguimiento" />
+  </Association>
+  <DataService
+    Name="Rplus_SoftDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="personas">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="persona" />
+        <SsdlProperty
+          Name="id_persona"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="persona/Properties[id_persona]" />
+        <SsdlProperty
+          Name="nombre"
+          Nullable="True"
+          Type="varchar(max)"
+          Property="persona/Properties[nombre]" />
+        <SsdlProperty
+          MaxLength="100"
+          Name="apellido"
+          Nullable="True"
+          Type="varchar"
+          Property="persona/Properties[apellido]" />
+        <SsdlProperty
+          Name="fecha_carga"
+          Nullable="True"
+          StoreGeneratedPattern="Computed"
+          Type="timestamp"
+          Property="persona/Properties[fecha_carga]" />
+        <SsdlProperty
+          Name="es_potencial"
+          Nullable="True"
+          Type="bit"
+          Property="persona/Properties[es_potencial]" />
+        <SsdlProperty
+          Name="es_cliente"
+          Nullable="True"
+          Type="bit"
+          Property="persona/Properties[es_cliente]" />
+        <SsdlProperty
+          MaxLength="200"
+          Name="email"
+          Nullable="True"
+          Type="varchar"
+          Property="persona/Properties[email]" />
+        <SsdlProperty
+          Name="FechaCumpleaños"
+          Nullable="True"
+          Type="date"
+          Property="persona/Properties[FechaCumpleaños]" />
+        <SsdlForeignKeyProperty
+          Name="id_empresa"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_empresa" />
+        <SsdlForeignKeyProperty
+          Name="id_grupo_contacto"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_grupo_contacto" />
+        <SsdlForeignKeyProperty
+          Name="id_cargo"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_cargo" />
+        <SsdlForeignKeyProperty
+          Name="id_tipo_contacto"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_tipo_contacto" />
+        <SsdlForeignKeyProperty
+          Name="id_titulo"
+          Nullable="True"
+          Type="int"
+          PropertyName="id_titulo" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_AdjuntoPersona_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_AdjuntoPersona_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_AdjuntoPersona_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_AdjuntoPersona_persona]/Members[AdjuntoPersona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="persona_id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_asistencia_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_asistencia_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_asistencia_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_asistencia_persona]/Members[asistencia]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_direccion_persona_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_direccion_persona_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_direccion_persona_persona]/Members[direccion_persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ResponsablePersona_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ResponsablePersona_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsablePersona_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_ResponsablePersona_persona]/Members[ResponsablePersona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_seguimiento_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_seguimiento_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_seguimiento_persona]/Members[seguimiento]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_telefono_persona">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_telefono_persona" />
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_telefono_persona]/Members[persona]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="Rplus_SoftData/Members[FK_telefono_persona]/Members[telefono]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="id_persona" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>
